@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<textarea id="code_snippet" rows="20" cols="100">// write your code here</textarea>
+<p>Time restriction (in seconds)</p>
+<input id="time_restriction" type="text" value="0">
+<p>Views restriction</p>
+<input id="views_restriction" type="text" value="0">
+<p></p>
+<button id="send_snippet" type="submit" onclick="send()">Submit</button>
+<script>
+    function send() {
+        let object = {
+        "code": document.getElementById("code_snippet").value,
+        "duration": document.getElementById("time_restriction").value,
+        "views": document.getElementById("views_restriction").value
+        };
+
+        let json = JSON.stringify(object);
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", '/api/code/new', false)
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send(json);
+
+        if (xhr.status == 200) {
+        alert("Success!");
+        }
+    }
+</script>
+</body>
+</html>
+
