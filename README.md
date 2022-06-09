@@ -21,3 +21,5 @@ Allows for:
 Uses:
 - Spring Boot
 - Spring Data (JPA with H2 database)
+- Spring Web
+- FreeMarker template engine for webview.
